@@ -21,10 +21,11 @@ end
 
 
 UPPERLIMIT = 100
+NUM_GUESSES = 5
 random_number = get_rand(UPPERLIMIT)
 legal_number = false
 guesses = Array.new
-for i in 1..5
+for i in 1..NUM_GUESSES
   begin
     guess = get_input(UPPERLIMIT)
     legal_number = is_integer?(guess)

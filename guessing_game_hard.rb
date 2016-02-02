@@ -19,6 +19,10 @@ def higher?(answer, number)
   return number < answer
 end
 
+def check_against_previous(answer, number, guesses)
+
+end
+
 UPPERLIMIT = 100
 NUM_GUESSES = 5
 random_number = get_rand(UPPERLIMIT)
@@ -32,6 +36,21 @@ for i in 1..NUM_GUESSES
   if check_guess?(random_number, guess.to_i)
     puts "Congrats on guessing that the number was #{guess}"
     exit
+  elsif guesses.include?(guess.to_i)
+    puts "Because your guess wasn't already wrong the first time you guessed it"
+  elsif higher?(random_number,guess.to_i)
+    if check_against_previous?(random_number, guess.to_i, guesses)
+      puts "The answer is higher then your guess"
+    else
+      puts "Are you even listening to what I'm saying.  Your previous guess was too high as well"
+    end
+  else
+    if check_against_previous?(random_number, guess.to_i, guesses)
+      puts "The answer is lower then your guess"
+    else
+      puts "Are you even listening to what I'm saying.  Your previous guess was too low as well"
+    end
   end
+  guesses << guess.to_i
 end
 puts "The number was #{random_number} and you kinda suck at this"

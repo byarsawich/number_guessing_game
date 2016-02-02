@@ -21,11 +21,10 @@ end
 
 
 UPPERLIMIT = 100
-num_guesses = 0
 random_number = get_rand(UPPERLIMIT)
 legal_number = false
 guesses = Array.new
-begin
+for i in 1..5
   begin
     guess = get_input
     legal_number = is_integer?(guess)
@@ -34,9 +33,6 @@ begin
   if check_guess?(random_number, guess)
     puts "Congrats on guessing that the number was #{guess}"
     exit
-  elsif num_guesses >=5
-    puts "The number was #{random_number} and you kinda suck at this"
-    exit
   elsif guesses.include?(guess)
     puts "Because your guess wasn't already wrong the first time you guessed it"
   elsif higher?(random_number,guess)
@@ -44,4 +40,5 @@ begin
   else
     puts "The answer is lower then your guess"
   end
-end while
+end
+puts "The number was #{random_number} and you kinda suck at this"

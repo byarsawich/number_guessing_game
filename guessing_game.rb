@@ -15,10 +15,6 @@ def is_integer?(value)
   return value.to_i.to_s == value.to_s
 end
 
-def higher?(answer, number)
-  return number < answer
-end
-
 
 UPPERLIMIT = 100
 NUM_GUESSES = 5
@@ -35,7 +31,7 @@ for i in 1..NUM_GUESSES
     exit
   elsif guesses.include?(guess.to_i)
     puts "Because your guess wasn't already wrong the first time you guessed it"
-  elsif higher?(random_number,guess.to_i)
+  elsif random_number > guess.to_i
     puts "The answer is higher then your guess"
   else
     puts "The answer is lower then your guess"

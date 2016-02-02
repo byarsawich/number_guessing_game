@@ -1,5 +1,5 @@
 def get_rand(number)
-  return rand(number)
+  return rand(number) + 1
 end
 
 def check_guess?(answer, number)

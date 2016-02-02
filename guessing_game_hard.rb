@@ -15,16 +15,6 @@ def is_integer?(value)
   return value.to_i.to_s == value.to_s
 end
 
-#returns true if guess is logical given previous information recieved
-#returns fales if guess is a stupid guess
-def check_against_previous?(answer, guess, previous_guesses)
-  #if no previous guesses then return true
-  if previous_guesses.length <= 0
-    return true
-  end
-  return !((previous_guesses[-1] > answer && guess > previous_guesses[-1]) || (previous_guesses[-1] < answer && guess < previous_guesses[-1]))
-end
-
 UPPERLIMIT = 100
 NUM_GUESSES = 5
 random_number = get_rand(UPPERLIMIT)
@@ -43,18 +33,18 @@ for i in 1..NUM_GUESSES
   elsif previous_guesses.include?(guess.to_i)
     puts "Because your guess wasn't already wrong the first time you guessed it.  Good job wasting a guess."
   elsif random_number > guess.to_i
+    puts "Your guess is lower than the answer"
     if guess.to_i < max_guess && guess.to_i > min_guess
-      puts "Your guess is lower than the answer"
       min_guess = guess.to_i
     else
-      puts "Are you even listening to what I'm saying.  Your previous guess was too low as well"
+      puts "Your guess is also outside of the range you already established."
     end
   else
+    puts "Your guess is higher than the answer"
     if guess.to_i < max_guess && guess.to_i > min_guess
-      puts "Your guess is higher than the answer"
       max_guess = guess.to_i
     else
-      puts "Are you even listening to what I'm saying.  Your previous guess was too high as well"
+      puts "Your guess is also outside of the range you already established."
     end
   end
   previous_guesses << guess.to_i

@@ -15,6 +15,10 @@ def is_integer?(value)
   return value.to_i.to_s == value.to_s
 end
 
+def higher?(answer, number)
+  return number > answer
+end
+
 
 UPPERLIMIT = 100
 num_guesses = 0
@@ -24,7 +28,7 @@ guesses = Array.new
 begin
   begin
     guess = get_input
-    legal_number = is_integer?
+    legal_number = is_integer?(guess)
   end while !legal_number
   num_guesses += 1
   if check_guess?(random_number, guess)
@@ -35,7 +39,9 @@ begin
     exit
   elsif guesses.include?(guess)
     puts "Because your guess wasn't already wrong the first time you guessed it"
-  elsif 
-
+  elsif higher?(random_number,guess)
+    puts "The answer is higher then your guess"
+  else
+    puts "The answer is lower then your guess"
   end
 end while
